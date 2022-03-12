@@ -1,0 +1,60 @@
+ALGORITHM Checkpoint
+VAR
+   i,j,k: INTEGER;
+   ch : STRING;
+   len ,nbwords,nbvoy:INTEGER;
+
+
+   
+BEGIN
+/* string length*/
+ i:=1;
+ len:=0; /*longeur de la chaine*/
+ write("write your sentence");
+ read(ch);
+ WHILE (ch[i] <> '.') DO /* tant que le position de i est different de '.' donc c'est pas la fin du phrase*/
+ i:=i+1;                 /* incrementer le compteur +1*/
+ len:=i;                 /*la la valeur de longeur prend la valeur du compteur a la fin de l'iteration*/
+ END_WHILE 
+ write("The length of the sentence:" ,len);
+
+
+
+  /*The number of words */
+
+ nbwords:=0;
+ j:=1;
+WHILE (j<= len) DO
+WHILE (j<= len and ch[j] ='') DO    /* si il y a des espaces au debut de la phrase on saute et incremente le compteur*/
+   
+      j:=j+1;                      /*incrementer le compteur de 1*/
+   END_WHILE
+   
+   IF (j<= len and ch[j]<>'') THEN               /*vérifier si on a le début d'un mot */
+      nbwords:=nbwords+1;                 /*incrémenter le compteur de nombre word*/
+   END_IF
+
+   WHILE (j<= len and ch[j]<>'') DO
+      j:=j+1;                           /*tant que le compteur est inferieur a longeur de la chaine et la position du caractére different un espace*/
+                                 /*incrementer le compteur de 1*/
+   END_WHILE
+
+END_WHILE
+ write("The number of words in the sentence is:",nbwords);
+
+
+
+
+/*The number of vowels */
+ nbvoy:=0;
+ k:=1;
+ FOR k FROM 1 TO len DO         /* utiliser la boucle for un point de depart le premier caractére jusqu'a la fin de la phrase*/
+    IF (ch[k] in['a','e','i','o','u','y']) THEN  /* si la position k egal a un voyelle*/
+       nbvoy=nbvoy+1;                            /* incrementer le nombre de voyelle par 1*/
+    END_IF
+    k=k+1;                                        /*incrementer le compteur du boucle for par 1*/ 
+ END_FOR 
+ write("The number of vowels  is:",nbvoy);
+
+
+END
